@@ -82,7 +82,6 @@ def compress_file(infile, outfile, minsize, c_args, verbose=False):
     vprint(verbose, f"Compressing {infile} into {outfile}")
     argslist = []
     argstring = " ".join([k + " " + v for k, v in c_args.items()])
-    print(argstring)
     subprocess.call(f'ffmpeg -i "{infile}" {argstring} "{outfile}"',
         shell=True)
 
