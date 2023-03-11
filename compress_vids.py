@@ -82,8 +82,12 @@ def compress_file(infile, outfile, minsize, c_args, verbose=False):
     vprint(verbose, f"Compressing {infile} into {outfile}")
     argslist = []
     argstring = " ".join([k + " " + v for k, v in c_args.items()])
-    subprocess.call(f'ffmpeg -i "{infile}" {argstring} "{outfile}"',
-        shell=True)
+    if verbose:
+        subprocess.call(f'ffmpeg -i "{infile}" {argstring} "{outfile}"',
+            shell=True)
+    else:
+        subprocess.call(f'ffmpeg -hide_banner -loglevel error -i "{infile}" {argstring} "{outfile}"',
+            shell=True)
 
 
 def compress_dir(indir, outdir, minsize, recursive, c_args, verbose=False):
@@ -155,7 +159,7 @@ def main(args):
         compress_dir(args.data, args.out, args.minsize, args.recursive,
                      c_args, args.verbose)
 
-    print('Successfully compressed: {} into {}'.format(args.data, args.out))
+    vprint(args.verbose, 'Finished running tool.')
 
 
 # ############################# Entry Point ###############################
