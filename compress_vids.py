@@ -17,6 +17,7 @@ from pymediainfo import MediaInfo
 
 
 ALLOWED_SCALES = [
+    'same',
     'half',
     'third',
     'quarter',
@@ -135,9 +136,12 @@ def main(args):
         c_args = {
             '-vcodec': args.vcodec,
             '-crf': args.crf,
-            '-vf': args.vf
         }
+        if args.vf is not None:
+            c_args['-vf'] = args.vf
     else:
+        if args.scale == 'same':
+            factor = 2
         if args.scale == 'half':
             factor = 4
         elif args.scale == 'third':
