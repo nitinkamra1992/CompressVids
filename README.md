@@ -2,6 +2,10 @@
 
 This is a video compression wrapper for python using the `ffmpeg` library. While it can compress a single video file, it also allows compressing all videos in a directory (recursively). Non-video files in the directory are directly copied to the specified directory.
 
+**NOTE**:
+- This repository is being archived.
+- The tool is available as a part of the Unified [CompressMedia](https://github.com/nitinkamra1992/CompressMedia) tool.
+
 ## Compatibility
 The tool has been written for Ubuntu and tested on Python v3.8 and above but should be compatible with other versions of python too.
 
